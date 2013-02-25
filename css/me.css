@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* CSS Document */
+
+.index_query{
+	height:300px;
+}
+
+input.text {
+    padding: 0.4em;
+}
