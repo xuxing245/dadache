@@ -3,6 +3,7 @@
 	session_start();
 	$userid = $_SESSION['userid'];
 	$username = $_SESSION['username'];
+	require_once('include/db.php');
 ?>
 <!DOCTYPE HTML PUBLIC "">
 <!-- [if IE 7 ]><html class="no-js ie ie7 lte7 lte8 lte9" lang="en-US"> <![endif] -->
@@ -45,7 +46,7 @@
                     <?php
 						}else{
 							//已登录
-							require_once('include/db.php');
+							
 							$num = 0;
 							$query = 'select count(*) n from core_partner p left join core_trip t on p.trip = t.id'
 									.' where t.user=\''.$userid.'\' and p.status=0';
@@ -54,10 +55,10 @@
 							if($row = mysql_fetch_array($result)){
 								$num = $row['n'];
 							}
-							mysql_close($db_connect);
+							//mysql_close($db_connect);
 					?>
                     	<li><a href="#">用户名：<?php echo $username ?></a></li>
-                    	<li><a href="applymanage.php">参加请求<span title="新请求" style="color:#F00">(<?php echo $num ?>)</span></a></li>
+                    	<li><a href="applymanage.php">加入请求<span title="新请求" style="color:#F00">(<?php echo $num ?>)</span></a></li>
                         <li class="dropdown">
                         	<a>我的行程</a>
                         	<ul>
